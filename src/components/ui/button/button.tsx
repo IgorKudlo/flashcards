@@ -1,14 +1,15 @@
 import s from './button.module.scss';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ElementType } from 'react';
 
-export type ButtonProps = {
-  variant: 'primary' | 'secondary';
+export type ButtonProps<T extends ElementType = 'button'> = {
+  as?: T;
+  variant?: 'primary' | 'secondary';
   fullWidth?: boolean;
-} & ComponentPropsWithoutRef<'button'>;
+} & ComponentPropsWithoutRef<T>;
 
-
-export const Button = ({ variant = 'primary', fullWidth = false, className, ...rest }: ButtonProps) => {
+export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) => {
+  const { variant = 'primary', fullWidth = false, className, as: Component = 'button', ...rest } = props;
   return (
-    <button className={`${s.button} ${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className ?? ''}`} {...rest} />
+    <Component className={`${s.button} ${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className ?? ''}`} {...rest} />
   );
 };
