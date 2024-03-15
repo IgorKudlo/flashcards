@@ -1,0 +1,39 @@
+.card {
+  padding: 33px 36px 29px;
+}
+
+.title {
+  margin-bottom: 27px;
+  text-align: center;
+}
+
+.field {
+  margin-bottom: 24px;
+  width: 100% !important;
+}
+
+.right-text {
+  margin-bottom: 66px;
+  text-align: right;
+}
+
+.button {
+  margin-bottom: 20px !important;
+}
+
+.center-text {
+  margin-bottom: 7px;
+  text-align: center;
+  color: var(--color-light-900);
+}
+
+.center-link {
+  display: flex;
+  justify-content: center;
+}
+
+a.link {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color-accent-500);
+}
