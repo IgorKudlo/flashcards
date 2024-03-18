@@ -10,6 +10,16 @@
   border: none;
 }
 
+.indicator {
+  position: relative;
+}
+
 .indicator img {
   display: block;
+}
+
+.selected {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

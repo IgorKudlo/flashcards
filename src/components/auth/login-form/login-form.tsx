@@ -30,9 +30,7 @@ export const LoginForm = () => {
     console.log(data);
   };
 
-  const {
-    field: { value, onChange }
-  } = useController({
+  const { field: { value, onChange } } = useController({
     name: 'rememberMe',
     control,
     defaultValue: false
