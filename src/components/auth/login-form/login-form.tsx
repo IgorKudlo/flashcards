@@ -1,19 +1,20 @@
 import authCard from '../auth-card.module.scss';
 import { useController, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { TextField } from '@/components/ui/text-field';
 import { Card } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { Checkbox } from '@/components/ui/checkbox';
 
-type FormValues = {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-}
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3),
+  rememberMe: z.boolean().default(false)
+});
 
-const emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-
+type FormValues = z.infer<typeof loginSchema>
 
 export const LoginForm = () => {
   const {
@@ -21,7 +22,9 @@ export const LoginForm = () => {
     handleSubmit,
     control,
     formState: { errors }
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    resolver: zodResolver(loginSchema)
+  });
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -40,19 +43,13 @@ export const LoginForm = () => {
       <Typography as={'h1'} variant={'h1'} className={authCard.title}>Sign In</Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
-          {...register('email', {
-            required: 'Email is required',
-            pattern: { value: emailRegex, message: 'Invalid email' }
-          })}
+          {...register('email')}
           label={'Email'}
           className={authCard.field}
           errorMessage={errors.email?.message}
         />
         <TextField
-          {...register('password', {
-            required: 'Password is required',
-            minLength: { value: 3, message: 'Password has to be last 3 characters long' }
-          })}
+          {...register('password')}
           label={'Password'}
           variant={'password'}
           className={authCard.field}
