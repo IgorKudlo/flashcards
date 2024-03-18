@@ -32,7 +32,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPros>((props, ref
   return (
     <div className={`${className ?? ''} ${s['text-field']} ${disabled ? s.disabled : ''} ${error ? s.error : ''}`}>
       {label && <Typography as={'label'} className={s.label}>{label}</Typography>}
-      {!variant && <input className={s.input} type='text' placeholder={placeholder} disabled={disabled} ref={ref} {...rest}/>}
+      {!variant
+        && <input className={s.input} type='text' placeholder={placeholder} disabled={disabled} ref={ref} {...rest}/>}
       {variant === 'password' && <FieldPassword/>}
       {variant === 'search' && <FieldSearch/>}
       {errorMessage && <span className={s['error-message']}>{errorMessage}</span>}
