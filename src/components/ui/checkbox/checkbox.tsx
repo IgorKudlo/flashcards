@@ -10,15 +10,17 @@ export type CheckboxProps = {
   className?: string;
   disabled?: boolean;
   label?: string;
+  id?: string;
+  name?: string;
   onChange: (checked: boolean) => void;
 } & ComponentPropsWithoutRef<'input'>
 
 export const Checkbox = (props: CheckboxProps) => {
-  const { label, checked = false, onChange, className, disabled } = props;
+  const { label, checked = false, onChange, name, className, disabled } = props;
 
   return (
     <label className={`${s.checkbox} ${className ?? ''} ${disabled ? s.disabled : ''}`}>
-      <CheckboxRadix.Root className={s.indicator} checked={checked} onCheckedChange={onChange}>
+      <CheckboxRadix.Root className={s.indicator} checked={checked} onCheckedChange={onChange} name={name}>
         <CheckboxRadix.Indicator className={s.selected}>
           {checked && <img src={checkboxSelected} alt=""/>}
         </CheckboxRadix.Indicator>

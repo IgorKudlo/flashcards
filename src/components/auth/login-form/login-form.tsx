@@ -1,12 +1,8 @@
 import authCard from '../auth-card.module.scss';
-import { useController, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/ui/button';
-import { TextField } from '@/components/ui/text-field';
-import { Card } from '@/components/ui/card';
-import { Typography } from '@/components/ui/typography';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button, Card, ControlledCheckbox, TextField, Typography } from '@/components';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -30,12 +26,6 @@ export const LoginForm = () => {
     console.log(data);
   };
 
-  const { field: { value, onChange } } = useController({
-    name: 'rememberMe',
-    control,
-    defaultValue: false
-  });
-
   return (
     <Card className={authCard.card}>
       <Typography as={'h1'} variant={'h1'} className={authCard.title}>Sign In</Typography>
@@ -53,7 +43,7 @@ export const LoginForm = () => {
           className={authCard.field}
           errorMessage={errors.password?.message}
         />
-        <Checkbox onChange={onChange} checked={value} label={'Remember Me'} />
+        <ControlledCheckbox label={'Remember Me'} control={control} name={'rememberMe'} />
         <Typography variant={'body2'} className={authCard['right-text']}>Forgot Password?</Typography>
         <Button type="submit" fullWidth className={authCard.button}>Submit</Button>
         <Typography variant={'body2'} className={authCard['center-text']}>Don't have an account?</Typography>

@@ -1,4 +1,4 @@
-import s from './textField.module.scss';
+import s from './text-field.module.scss';
 import eye from '@/assets/images/eye.svg';
 import search from '@/assets/images/search.svg';
 import { ComponentPropsWithoutRef, forwardRef } from 'react';
