@@ -8,12 +8,11 @@ export type TextFieldPros = {
   label?: string;
   variant?: 'password' | 'search';
   disabled?: boolean;
-  error?: boolean;
   errorMessage?: string;
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldPros>((props, ref) => {
-  const { label, variant, className, disabled = false, placeholder, error = false, errorMessage, ...rest } = props;
+  const { label, variant, className, disabled = false, placeholder, errorMessage, ...rest } = props;
 
   const FieldPassword = () => (
     <div className={s['password-field']}>
@@ -30,7 +29,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPros>((props, ref
   );
 
   return (
-    <div className={`${className ?? ''} ${s['text-field']} ${disabled ? s.disabled : ''} ${error ? s.error : ''}`}>
+    <div
+      className={`${className ?? ''} ${s['text-field']} ${disabled ? s.disabled : ''} ${errorMessage ? s.error : ''}`}
+    >
       {label && <Typography as={'label'} className={s.label}>{label}</Typography>}
       {!variant
         && <input className={s.input} type='text' placeholder={placeholder} disabled={disabled} ref={ref} {...rest}/>}

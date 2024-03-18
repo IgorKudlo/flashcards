@@ -12,8 +12,16 @@ type FormValues = {
   rememberMe: boolean;
 }
 
+const emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+
 export const LoginForm = () => {
-  const { register, handleSubmit, control } = useForm<FormValues>();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors }
+  } = useForm<FormValues>();
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -31,8 +39,25 @@ export const LoginForm = () => {
     <Card className={authCard.card}>
       <Typography as={'h1'} variant={'h1'} className={authCard.title}>Sign In</Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField {...register('email')} label={'Email'} className={authCard.field} />
-        <TextField {...register('password')} label={'Password'} variant={'password'} className={authCard.field} />
+        <TextField
+          {...register('email', {
+            required: 'Email is required',
+            pattern: { value: emailRegex, message: 'Invalid email' }
+          })}
+          label={'Email'}
+          className={authCard.field}
+          errorMessage={errors.email?.message}
+        />
+        <TextField
+          {...register('password', {
+            required: 'Password is required',
+            minLength: { value: 3, message: 'Password has to be last 3 characters long' }
+          })}
+          label={'Password'}
+          variant={'password'}
+          className={authCard.field}
+          errorMessage={errors.password?.message}
+        />
         <Checkbox onChange={onChange} checked={value} label={'Remember Me'} />
         <Typography variant={'body2'} className={authCard['right-text']}>Forgot Password?</Typography>
         <Button type="submit" fullWidth className={authCard.button}>Submit</Button>
