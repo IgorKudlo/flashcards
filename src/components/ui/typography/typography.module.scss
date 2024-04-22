@@ -1,0 +1,77 @@
+h1, .h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xxl);
+  line-height: 138%;
+}
+
+h2, .h2 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: 180%;
+}
+
+h3, .h3 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  line-height: 133%;
+}
+
+h4, .h4 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: 150%;
+}
+
+.body1 {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-m);
+  line-height: 150%;
+}
+
+.subtitle1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: 150%;
+}
+
+.body2 {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: 171%;
+}
+
+.subtitle2 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  line-height: 171%;
+}
+
+.caption {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  line-height: 133%;
+}
+
+.overline {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  line-height: 133%;
+}
+
+.link1 {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: 171%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--color-info-500);
+}
+
+.link2 {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  line-height: 133%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--color-info-500);
+}
