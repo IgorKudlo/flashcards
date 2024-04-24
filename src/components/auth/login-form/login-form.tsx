@@ -12,7 +12,8 @@ export const LoginForm = () => {
   const { register, handleSubmit, control } = useForm<FormValues>();
   const { field: { name, ref, onChange, onBlur, disabled, value } } = useController({
     control,
-    name: 'rememberMe'
+    name: 'rememberMe',
+    defaultValue: false
   });
 
   const onSubmit = (data: FormValues) => {
