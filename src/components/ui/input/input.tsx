@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, useState } from 'react';
+import { ComponentPropsWithoutRef, forwardRef, useState } from 'react';
 import EyeIcon from '@/assets/images/eye.svg';
 import SearchIcon from '@/assets/images/search.svg';
 import s from './input.module.scss';
@@ -8,7 +8,7 @@ export type InputProps = {
   error?: string
 } & ComponentPropsWithoutRef<'input'>
 
-export const Input = (props: InputProps) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     type = 'text',
     label,
@@ -41,6 +41,7 @@ export const Input = (props: InputProps) => {
       `}>
         <input
           type={type === 'password' ? isShowPassword ? 'password' : 'text' : type}
+          ref={ref}
           {...restProps}
         />
         {type === 'password' &&
@@ -53,4 +54,4 @@ export const Input = (props: InputProps) => {
       {error && <div className={s.errorMessage}>Error</div>}
     </div>
   );
-};
+});

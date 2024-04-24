@@ -15,7 +15,7 @@ module.exports = {
     'quotes': ['error', 'single'],
     'react/prop-types': [0],
     'indent': ['error', 2],
-    'max-len': ['error', { code: 100 }],
+    'max-len': ['error', { code: 120 }],
     'object-curly-spacing': ["error", "always"]
   },
 }
