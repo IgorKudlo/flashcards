@@ -1,13 +1,13 @@
-import { useController, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Card, Checkbox, Input, Typography } from '@/components';
+import { Button, Card, FormCheckbox, Input, Typography } from '@/components';
 import s from './login-form.module.scss';
 
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(3),
-  rememberMe: z.boolean().optional()
+  rememberMe: z.boolean().default(false)
 });
 
 type FormValues = z.infer<typeof loginSchema>;
@@ -15,11 +15,6 @@ type FormValues = z.infer<typeof loginSchema>;
 export const LoginForm = () => {
   const { register, handleSubmit, control, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(loginSchema)
-  });
-  const { field: { name, ref, onChange, onBlur, disabled, value } } = useController({
-    control,
-    name: 'rememberMe',
-    defaultValue: false
   });
 
   const onSubmit = (data: FormValues) => {
@@ -43,16 +38,11 @@ export const LoginForm = () => {
           className={s.password}
           error={errors.password?.message}
         />
-        <Checkbox
-          name={name}
-          ref={ref}
-          onChange={onChange}
-          onBlur={onBlur}
-          disabled={disabled}
-          checked={value}
-          onCheckedChange={onChange}
-          label={'remember me'}
+        <FormCheckbox
+          control={control}
+          name={'rememberMe'}
           id={'remember-me'}
+          label={'Remember me'}
           className={s.rememberMe}
         />
         <Typography variant={'body2'} className={s.helpRightText}>Forgot Password?</Typography>
