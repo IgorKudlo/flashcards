@@ -51,7 +51,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
               onClick={handleShowPassword}/>}
         {type === 'search' && <img className={s.iconSearch} src={SearchIcon} alt="icon search"/>}
       </div>
-      {error && <div className={s.errorMessage}>Error</div>}
+      {error && <div className={s.errorMessage}>{error}</div>}
     </div>
   );
 });

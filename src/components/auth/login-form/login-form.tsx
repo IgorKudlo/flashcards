@@ -1,15 +1,21 @@
 import { useController, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, Checkbox, Input, Typography } from '@/components';
 import s from './login-form.module.scss';
 
-type FormValues = {
-  email: string
-  password: string
-  rememberMe: boolean
-}
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3),
+  rememberMe: z.boolean().optional()
+});
+
+type FormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm = () => {
-  const { register, handleSubmit, control } = useForm<FormValues>();
+  const { register, handleSubmit, control, formState: { errors } } = useForm<FormValues>({
+    resolver: zodResolver(loginSchema)
+  });
   const { field: { name, ref, onChange, onBlur, disabled, value } } = useController({
     control,
     name: 'rememberMe',
@@ -24,12 +30,18 @@ export const LoginForm = () => {
     <Card>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Typography variant={'h1'} className={s.header}>Sign In</Typography>
-        <Input {...register('email')} label={'Email'} className={s.email} />
+        <Input
+          {...register('email')}
+          label={'Email'}
+          className={s.email}
+          error={errors.email?.message}
+        />
         <Input
           {...register('password')}
           label={'Password'}
           type="password"
           className={s.password}
+          error={errors.password?.message}
         />
         <Checkbox
           name={name}
