@@ -1,0 +1,20 @@
+.tabsList {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 2px;
+}
+
+.tab {
+  border: 1px solid var(--color-dark-300);
+  padding: 6px 12px;
+  width: 116px;
+  height: 36px;
+  text-align: center;
+  background-color: transparent;
+
+  &[data-state="inactive"] {
+    background-color: var(--color-accent-500);
+    border-color: var(--color-accent-500);
+    cursor: pointer;
+  }
+}
