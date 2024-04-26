@@ -1,0 +1,25 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    text-align: left;
+    background-color: var(--color-dark-500);
+    border: 1px solid var(--color-dark-500);
+
+    th {
+      padding: 6px 24px;
+    }
+  }
+
+  tbody {
+    border-left: 1px solid var(--color-dark-500);
+    border-right: 1px solid var(--color-dark-500);
+  }
+
+  td {
+    padding: 6px 24px;
+    border-top: 1px solid var(--color-dark-500);
+    border-bottom: 1px solid var(--color-dark-500);
+  }
+}
