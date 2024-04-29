@@ -42,3 +42,7 @@ export type CreateDeckArgs = {
   name: string;
   isPrivate: boolean;
 }
+
+export type DeleteDeckArgs = {
+  id: string;
+}
