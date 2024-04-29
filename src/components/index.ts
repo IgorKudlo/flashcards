@@ -6,3 +6,4 @@ export * from './ui/input';
 export * from './ui/table';
 export * from './ui/typography';
 export * from './edit-mode';
+export * from './header';
