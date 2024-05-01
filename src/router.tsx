@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider } from 'react-router-dom';
-import { Login, MainLayout } from '@/pages';
+import { Decks, Login, MainLayout } from '@/pages';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -12,11 +12,15 @@ const privateRoutes: RouteObject[] = [
   {
     path: '/',
     element: <div>hello</div>
+  },
+  {
+    path: '/decks',
+    element: <Decks />
   }
 ];
 
 function PrivateRoutes() {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }
