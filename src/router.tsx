@@ -1,9 +1,10 @@
 import { createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider } from 'react-router-dom';
+import { Login, MainLayout } from '@/pages';
 
 const publicRoutes: RouteObject[] = [
   {
     path: '/login',
-    element: <div>login</div>
+    element: <Login />
   }
 ];
 
@@ -22,10 +23,16 @@ function PrivateRoutes() {
 
 const router = createBrowserRouter([
   {
-    element: <PrivateRoutes />,
-    children: privateRoutes
-  },
-  ...publicRoutes
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      {
+        element: <PrivateRoutes />,
+        children: privateRoutes
+      },
+      ...publicRoutes
+    ]
+  }
 ]);
 
 
