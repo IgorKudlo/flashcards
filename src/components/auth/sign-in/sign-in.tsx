@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, FormCheckbox, Input, Typography } from '@/components';
-import s from './login-form.module.scss';
+import s from './sign-in.module.scss';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -12,7 +12,7 @@ const loginSchema = z.object({
 
 type FormValues = z.infer<typeof loginSchema>;
 
-export const LoginForm = () => {
+export const SignIn = () => {
   const { register, handleSubmit, control, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(loginSchema)
   });

@@ -1,10 +1,31 @@
 import { createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider } from 'react-router-dom';
-import { Decks, Login, MainLayout } from '@/pages';
+import { Decks, MainLayout } from '@/pages';
+import { CheckEmail, CreatePassword, ForgotPassword, Profile, SignIn, SignUp } from '@/components/auth';
 
 const publicRoutes: RouteObject[] = [
   {
-    path: '/login',
-    element: <Login />
+    path: '/auth/sign-in',
+    element: <SignIn />
+  },
+  {
+    path: '/auth/sign-up',
+    element: <SignUp />
+  },
+  {
+    path: '/auth/forgot-password',
+    element: <ForgotPassword />
+  },
+  {
+    path: '/auth/check-email',
+    element: <CheckEmail />
+  },
+  {
+    path: '/auth/create-password',
+    element: <CreatePassword />
+  },
+  {
+    path: '/auth/profile',
+    element: <Profile />
   }
 ];
 

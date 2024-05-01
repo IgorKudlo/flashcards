@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button, Card, Input, Typography } from '@/components';
-import s from './forgot-password-create.module.scss';
+import s from './create-password.module.scss';
 
 const forgotPasswordSchema = z.object({
   password: z.string().min(3)
@@ -10,7 +10,7 @@ const forgotPasswordSchema = z.object({
 
 type FormValues = z.infer<typeof forgotPasswordSchema>;
 
-export const ForgotPasswordCreate = () => {
+export const CreatePassword = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(forgotPasswordSchema)
   });

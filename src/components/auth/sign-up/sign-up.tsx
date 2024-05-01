@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Card, Input, Typography } from '@/components';
-import s from './register-form.module.scss';
+import s from './sign-up.module.scss';
 
 const registerSchema = z.object({
   email: z.string().email(),
@@ -16,7 +16,7 @@ const registerSchema = z.object({
 
 type FormValues = z.infer<typeof registerSchema>;
 
-export const RegisterForm = () => {
+export const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(registerSchema)
   });

@@ -1,13 +1,13 @@
 import { Button, Card, Typography } from '@/components';
-import CheckEmail from '@/assets/images/check-email.svg';
-import s from './forgot-password-check.module.scss';
+import CheckEmailIcon from '@/assets/images/check-email.svg';
+import s from './check-email.module.scss';
 
-export const ForgotPasswordCheck = () => {
+export const CheckEmail = () => {
   return (
     <Card>
       <Typography variant={'h1'} className={s.header}>Check Email</Typography>
       <div className={s.icon}>
-        <img src={CheckEmail} alt=""/>
+        <img src={CheckEmailIcon} alt=""/>
       </div>
       <Typography
         variant={'body2'}
